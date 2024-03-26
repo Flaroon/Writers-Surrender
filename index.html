@@ -6,47 +6,94 @@
     <title>A Writer's Surrender</title>
     <style>
         body, html {
-            margin: 0px;
-            padding: 0px;
+            margin: 0;
+            padding: 0;
             width: 100%;
             height: 100%;
             overflow-x: hidden;
         }
         img {
-            display: block; /* This ensures that there is no extra space below the image */
-            width: 100%; /* Stretches the image to the edges */
-            height: auto; /* Keeps the aspect ratio intact */
-            margin: 0px 0px -4px 0px; /* Adjusts bottom margin to -3px to overlap images */
-            padding: 0px; /* Ensures there is no padding around the images */
-            vertical-align: middle; /* This can also help eliminate gaps in some cases */
-            border-radius: 0%;
+            display: block;
+            width: 100%;
+            height: auto;
+            margin: 0 0 -4px 0;
+            padding: 0;
+            vertical-align: middle;
+        }
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        .barn-door {
+            position: fixed;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: white;
+            z-index: 11;
+            transform: translateX(0%);
+            transition: transform 3s ease-in-out; /* Adjusted to 3 seconds */
+            box-shadow: 0 0 50px 30px white; /* Adds blur effect on the edges */
+        }
+        .left-door {
+            left: 0;
+        }
+        .right-door {
+            right: 0;
+        }
+        .door-open .barn-door.left-door {
+            transform: translateX(-100%);
+        }
+        .door-open .barn-door.right-door {
+            transform: translateX(100%);
         }
     </style>
 </head>
 <body>
-<!-- Manually list your SVGs here -->
-<img src="svgs/1.svg" alt="Image 1">
-<img src="svgs/2.svg" alt="Image 2">
-<img src="svgs/3.svg" alt="Image 1">
-<img src="svgs/4.svg" alt="Image 2">
-<img src="svgs/5.svg" alt="Image 1">
-<img src="svgs/6.svg" alt="Image 2">
-<img src="svgs/7.svg" alt="Image 1">
-<img src="svgs/8.svg" alt="Image 2">
-<img src="svgs/9.svg" alt="Image 1">
-<img src="svgs/10.svg" alt="Image 2">
-<img src="svgs/11.svg" alt="Image 1">
-<img src="svgs/12.svg" alt="Image 2">
-<img src="svgs/13.svg" alt="Image 2">
-<img src="svgs/14.svg" alt="Image 2">
-<img src="svgs/15.svg" alt="Image 1">
-<img src="svgs/16.svg" alt="Image 2">
-<img src="svgs/17.svg" alt="Image 2">
-<img src="svgs/18.svg" alt="Image 2">
-<img src="svgs/19.svg" alt="Image 1">
-<img src="svgs/20.svg" alt="Image 2">
 
-<!-- Add more <img> tags for each SVG file -->
+<div class="loading-screen">Loading...</div>
+<div class="barn-door left-door"></div>
+<div class="barn-door right-door"></div>
+
+<img src="pngs/1.png" alt="Image 1">
+<img src="pngs/2.png" alt="Image 2">
+<img src="pngs/3.png" alt="Image 3">
+<img src="pngs/4.png" alt="Image 4">
+<img src="pngs/5.png" alt="Image 5">
+<img src="pngs/6.png" alt="Image 6">
+<img src="pngs/7.png" alt="Image 7">
+<img src="pngs/8.png" alt="Image 8">
+<img src="pngs/9.png" alt="Image 9">
+<img src="pngs/10.png" alt="Image 10">
+<img src="pngs/11.png" alt="Image 11">
+<img src="pngs/12.png" alt="Image 12">
+<img src="pngs/13.png" alt="Image 13">
+<img src="pngs/14.png" alt="Image 14">
+<img src="pngs/15.png" alt="Image 15">
+<img src="pngs/16.png" alt="Image 16">
+<img src="pngs/17.png" alt="Image 17">
+<img src="pngs/18.png" alt="Image 18">
+<img src="pngs/19.png" alt="Image 19">
+<img src="pngs/20.png" alt="Image 20">
+
+<script>
+window.onload = function() {
+    document.querySelector('.loading-screen').style.display = 'none';
+    document.body.classList.add('door-open');
+    setTimeout(() => {
+        document.querySelectorAll('.barn-door').forEach(door => door.style.display = 'none');
+    }, 3000); // Adjusted to match the new transition time of 3 seconds
+};
+</script>
 
 </body>
 </html>
